@@ -1,0 +1,63 @@
+# ============ Sırlar ve yerel yapılandırma ============
+.env
+.env.local
+*.env
+!.env.example
+*.pem
+*.key
+appsettings.Development.json
+appsettings.Local.json
+
+# ============ .NET ============
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userprefs
+.vs/
+TestResults/
+*.trx
+*.coverage
+project.lock.json
+
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ============ Node / Frontend ============
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+
+# ============ Veri, model, üretilen çıktılar ============
+data/
+*.db
+*.sqlite3
+*.csv
+!docs/**/*.csv
+services/ai-service/model/*.pkl
+services/ai-service/model/*.txt
+services/ai-service/model/*.joblib
+
+# ============ Editör ve işletim sistemi ============
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ============ Log ============
+logs/
+*.log
