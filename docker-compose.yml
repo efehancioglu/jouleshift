@@ -1,0 +1,49 @@
+name: jouleshift
+
+services:
+
+  mqtt:
+    image: eclipse-mosquitto:2.0
+    container_name: jouleshift-mqtt
+    restart: unless-stopped
+    ports:
+      - "${MQTT_PORT:-1883}:1883"
+    volumes:
+      - ./infra/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    networks:
+      - jouleshift-net
+    healthcheck:
+      test: [ "CMD", "mosquitto_pub", "-h", "127.0.0.1", "-p", "1883", "-t", "healthcheck", "-m", "ping", "-q", "0" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  redis:
+    image: redis:7-alpine
+    container_name: jouleshift-redis
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --save
+      - ""
+      - --appendonly
+      - "no"
+      - --maxmemory
+      - 256mb
+      - --maxmemory-policy
+      - noeviction
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - jouleshift-net
+    healthcheck:
+      test: [ "CMD", "redis_cli", "ping" ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 3s
+
+networks:
+  jouleshift-net:
+    driver: bridge
