@@ -22,7 +22,7 @@ class CommandReason(str, Enum):
     MANUAL = "MANUAL"
 
 
-# giden: telemetri
+# cihazlardan giden: telemetri
 
 class RoomTelemetry(BaseModel):
     """Bir ofis odasinin anlik durumu. Simulator uretir, cekirdek motor tuketir."""
@@ -64,3 +64,29 @@ class DeviceStatus(BaseModel):
     online: bool
     ts_utc: datetime = Field(default_factory=utc_now)
 
+# cihaza gelen: komut
+
+class DesiredRoomState(BaseModel):
+    """Hedef durum, asla degisim miktari icermez."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    setpoint_c: float | None = Field(None, ge=10.0, le=35.0)
+    ventilation_ach: float | None = Field(None, ge=0.0, le=10.0)
+
+    @model_validator(mode="after")
+    def _at_least_one_field(self) -> "DesiredRoomState":
+        if self.setpoint_c is None and self.ventilation_ach is None:
+            raise ValueError("desired en az bir alan icermeli")
+        return self
+    
+class RoomCommand(BaseModel):
+    """Cekirdek motordan bir odaya gonderilen komut"""
+
+    model_config= ConfigDict(extra="ignore")
+
+    command_id : UUID
+    ts_utc: datetime
+    reason: CommandReason
+    desired: DesiredRoomState
+    
