@@ -63,8 +63,6 @@ yıllık toplamda genellikle daha fazla kazandırıyor. Bu yüzden tasarruf hesa
 
 ## Öne çıkan teknik kararlar
 
-Bu kararların tamamı gerekçeleriyle [`docs/adr/`](docs/adr/) altında kayıtlı.
-
 **Talep, anlık kW üzerinden değil 15 dakikalık projeksiyonla kontrol ediliyor.**
 Güç aşım bedeli anlık tepe değere değil 15 dakikalık ortalama talebe göre
 hesaplandığı için, kontrol edilen büyüklük faturalanan büyüklükle aynı tutuluyor.
@@ -110,7 +108,7 @@ ve bu durum telemetride açıkça işaretleniyor.
 
 ---
 
-## Bina modeli
+## Örnek Bina modeli
 
 Simülasyon, gerçekçi bir yük bütçesi üzerine kurulu — parametrelerin tamamı
 yapılandırmadan geliyor.
