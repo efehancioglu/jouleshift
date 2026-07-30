@@ -51,6 +51,12 @@ yıllık toplamda genellikle daha fazla kazandırıyor. Bu yüzden tasarruf hesa
 
 ### Kontrol kolları
 
+> Bu değerler doğrulanmış saha ölçümleri değil, **tasarım varsayımlarıdır.**
+> İç kazançlar, havalandırma debisi ve termal kütle gibi kalemler yerleşik
+> mühendislik mertebelerinden seçildi; bina ölçeği ve eşikler ise kontrol
+> probleminin iyi tanımlı olmasını sağlayacak şekilde belirlendi. Tümü
+> `.env` üzerinden yapılandırılabilir.
+
 | Yük | Müdahale | Kazanç |
 |---|---|---|
 | Araç şarj istasyonları | Şarj gücünü kıs (22 → 7 kW) | ~150 kW |
@@ -122,6 +128,12 @@ yapılandırmadan geliyor.
 | Müdahale eşiği | 480 kW devreye / 440 kW bırak |
 
 Yaz puant senaryosunda toplam yük:
+
+> Bu değerler doğrulanmış saha ölçümleri değil, **tasarım varsayımlarıdır.**
+> İç kazançlar, havalandırma debisi ve termal kütle gibi kalemler yerleşik
+> mühendislik mertebelerinden seçildi; bina ölçeği ve eşikler ise kontrol
+> probleminin iyi tanımlı olmasını sağlayacak şekilde belirlendi. Tümü
+> `.env` üzerinden yapılandırılabilir.
 
 | Yük kalemi | Nominal | Puant | Kontrol |
 |---|---|---|---|
