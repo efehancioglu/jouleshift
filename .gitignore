@@ -61,3 +61,8 @@ Thumbs.db
 # ============ Log ============
 logs/
 *.log
+
+#============= Gelistirme Ortami ================
+requirements-dev.txt
+services/simulator/tests
+pytest.ini

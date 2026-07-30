@@ -66,11 +66,14 @@ class Settings(BaseSettings):
     room_setpoint_default_c: float = Field(23.0, ge=16.0, le=30.0)
     room_setpoint_deadband_c: float = Field(0.5, gt=0, le=3.0)
     room_initial_temp_c: float = Field(24.0, ge=-20.0, le=60.0)
+    room_hvac_proportional_band_c: float = Field(default=1.0, gt=0.0, le=5.0)
 
     # İç Kazançlar
     person_heat_w: float = Field(100.0, ge=0)
     plug_load_w_per_m2: float = Field(7.0, ge=0)
     lighting_load_w_per_m2: float = Field(8.0, ge=0)
+    plug_standby_fraction: float = Field(default=0.25, ge=0.0, le=1.0)
+    lighting_base_fraction: float = Field(default=0.10, ge=0.0, le=1.0)
 
     # CO2
     co2_outdoor_ppm: float = Field(420.0, gt=0)
