@@ -36,6 +36,10 @@ class Settings(BaseSettings):
     mqtt_port: int = Field(1883, gt=0, lt=65536)
     mqtt_topic_root : str = "jouleshift"
     mqtt_client_id_prefix : str = "jouleshift"
+    command_id_memory: int = Field(default=64, ge=1, le=10000)
+
+    sensor_temp_noise_c: float = Field(default=0.15, ge=0.0, le=2.0)
+    sensor_co2_noise_ppm: float = Field(default=15.0, ge=0.0, le=200.0)
 
     # Bolge / Saha
     site_name : str = "Istanbul Ofis Plaza"
